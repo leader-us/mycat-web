@@ -1,0 +1,39 @@
+logging:
+  level: 
+    root: INFO
+    org:
+      springframework: INFO
+    io:
+      mycat: DEBUG
+# Tomcat
+server:
+    tomcat:
+        max-threads: 2
+        min-spare-threads: 5
+    port: 8080    
+spring:
+
+  jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd HH:mm:ss
+  resources:
+            static-locations: classpath:/static/,classpath:/views/
+  datasource:
+    username: root
+    password: MyNewPass@123
+    url: jdbc:mysql://localhost:3306/imkingroom?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #url: jdbc:hsqldb:mem://localhost/testdb;shutdown=true
+    #driver-class-name: org.hsqldb.jdbcDriver
+    #启动时需要初始化的建表语句
+    #schema: classpath*:db/mydb-schema.sql
+    #初始化的数据
+    #data: classpath*:db/mydb-data.sql
+    # Initialize the datasource with available DDL and DML scripts.
+    #initialization-mode: always
+    #continue-on-error: false
+    #data-password:
+    #data-username:
+    #schema-password:
+    #schema-username:
+    sql-script-encoding: utf-8
