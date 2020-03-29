@@ -1,4 +1,4 @@
-package io.mycat.dao;
+package io.mycat.myweb.dao;
 
 import java.util.Optional;
 

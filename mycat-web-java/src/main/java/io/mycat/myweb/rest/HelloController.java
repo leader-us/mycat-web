@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.mycat.myweb.core.dao.AccountDao;
+import io.mycat.myweb.dao.AccountDao;
 
 @RestController
 public class HelloController {

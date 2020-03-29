@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "mycat-web-front"
+		},
+		{
+			"path": "mycat-web-java"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}

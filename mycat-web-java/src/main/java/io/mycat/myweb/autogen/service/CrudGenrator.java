@@ -26,11 +26,11 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.Version;
+import io.mycat.dao.util.NameUtil;
 import io.mycat.myweb.autogen.bean.ColumnEntity;
 import io.mycat.myweb.autogen.bean.ERRelation;
 import io.mycat.myweb.autogen.bean.Mytemplate;
 import io.mycat.myweb.autogen.bean.TableEntity;
-import io.mycat.myweb.core.util.NameUtil;
 
 public class CrudGenrator {
   final static Configuration cfg;
@@ -93,7 +93,7 @@ public class CrudGenrator {
 
   public List<String> getTables() {
     List<String> tableList = new ArrayList<String>();
-    if (NameUtil.isNotBlank(tables)) {
+    if (io.mycat.dao.util.NameUtil.isNotBlank(tables)) {
       tableList.addAll(Arrays.asList(tables.split(",")));
     }
     return tableList;

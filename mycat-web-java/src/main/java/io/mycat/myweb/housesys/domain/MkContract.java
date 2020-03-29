@@ -3,8 +3,8 @@ package io.mycat.myweb.housesys.domain;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 /**
  * mk_contract
@@ -45,7 +45,7 @@ public class  MkContract {
     /**
 	 * 用户ID
 	 */
-	@io.mycat.myweb.core.DomainER.ForeginKey(MkUser.class)
+	@io.mycat.dao.DomainER.ForeginKey(MkUser.class)
 	@Column("user_id")
 	private Long userId;
     /**
