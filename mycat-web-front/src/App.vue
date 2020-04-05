@@ -10,9 +10,9 @@
     >
       <div class="v-menu__content--active" style="display:none; z-index:1000;"></div>
       {{ comutil.MessageBox.content }}
-      <v-icon color="primary">mdi-close-box</v-icon>
+      <v-icon color="primary">mdi-clc ose-box</v-icon>
     </v-snackbar>
-    <v-app-bar app color="primary" dark fluid >
+    <v-app-bar v-if="comutil.Token.validToken()" app color="primary" dark fluid >
       <main-menu></main-menu>
     </v-app-bar>
     <!-- Sizes your content based upon application components -->

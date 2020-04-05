@@ -6,6 +6,25 @@ const AlertType = {
   WARN: 'warning',
   ERROR: 'error'
 }
+const Constant = {
+  baseURL: 'http://localhost:8080'
+}
+const Token = {
+  token: null,
+  expireTime: null,
+  refreshToken: null,
+  user: null,
+  validToken() {
+    return this.token != null
+  },
+  updateData(targObj) {
+    Object.assign(this, targObj)
+    console.log(JSON.stringify(this))
+  },
+  setNewToken(newToken) {
+    state.store.commit('setToken', newToken)
+  }
+}
 const ComInfo = {
   curtime: new Date().getTime(),
 
@@ -168,6 +187,7 @@ const CURDDialog = {
 }
 const state = {
   store: null,
+  Token: Token,
   alert: Alert,
   ComInfo: ComInfo,
   CURDDialog: CURDDialog,
@@ -186,6 +206,8 @@ function getTipIconName(tipType) {
 
 // 暴露出这些属性和方法
 export default {
+  Constant,
+  Token,
   ComInfo,
   state,
   Alert,

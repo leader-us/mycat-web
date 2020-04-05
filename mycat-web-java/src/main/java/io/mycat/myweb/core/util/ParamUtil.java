@@ -2,8 +2,6 @@ package io.mycat.myweb.core.util;
 
 import java.util.Map;
 
-import io.mycat.myweb.autogen.bean.Constant;
-
 /**
  * @author Leader us
  */
