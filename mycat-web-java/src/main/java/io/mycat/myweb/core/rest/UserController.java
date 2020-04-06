@@ -41,7 +41,7 @@ public class UserController {
 				String token = tokenService.getToken(dbuser);
 				Map<String, Object> data = new HashMap<>();
 				data.put("token", token);
-				data.put("user", userForBase);
+				data.put("user", user.getName());
 				rest.data = Json.createObjectBuilder(data).build();
 				return rest;
 			}

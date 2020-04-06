@@ -9,14 +9,18 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
+import io.mycat.myweb.core.config.properties.ExcludeUrlsProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import io.mycat.myweb.core.service.TokenService;
 import io.mycat.myweb.core.service.UserService;
+
+import java.nio.file.PathMatcher;
 
 /**
  * 权限验证，基于Token
@@ -28,6 +32,11 @@ public class MyAuthInterceptor extends HandlerInterceptorAdapter {
     UserService userService;
     @Autowired
     TokenService tokenService;
+    @Autowired
+    ExcludeUrlsProperties excludeUrlsProperties;
+
+    @Autowired
+    AntPathMatcher antPathMatcher;
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
@@ -61,6 +70,12 @@ public class MyAuthInterceptor extends HandlerInterceptorAdapter {
     }
 
     private boolean needToken(HttpServletRequest httpServletRequest) {
+        String requestURI = httpServletRequest.getRequestURI();
+        for(String url : excludeUrlsProperties.getTokenValidationUrls()) {
+            if (antPathMatcher.match(url, requestURI)) {
+                return false;
+            }
+        }
         return true;
     }
 }
