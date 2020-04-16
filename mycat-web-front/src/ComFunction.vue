@@ -204,6 +204,61 @@ function getTipIconName(tipType) {
   return tipIconMap.get(tipType)
 }
 
+const Validator = {
+  emailCheck: function(v) {
+    if (v === '' || v === undefined || v === null) {
+      return 'E-mail is required'
+    } else {
+      if (/.+@.+\..+/.test(v)) {
+        return true
+      } else {
+        return 'E-mail must be valid'
+      }
+    }
+  },
+
+  houseNameCheck: function(v) {
+    if (v === '' || v === undefined || v === null) {
+      return 'Name is required'
+    } else {
+      if (v && v.length >= 10) {
+        return 'Name must be less than 10 characters'
+      } else {
+        return true
+      }
+    }
+  },
+
+  itemCheck: function(v) {
+    if (v) {
+      return !!v
+    } else {
+      return 'Item is required'
+    }
+  },
+  agreeCheck: function(v) {
+    if (v) {
+      return !!v
+    } else {
+      return 'You must agree to continue!'
+    }
+  },
+  userNameCheck: function(v) {
+    if (v) {
+      return !!v
+    } else {
+      return 'Input user name!'
+    }
+  },
+  passwordCheck: function(v) {
+    if (v) {
+      return !!v
+    } else {
+      return 'Input password!'
+    }
+  }
+}
+
 // 暴露出这些属性和方法
 export default {
   Constant,
@@ -217,6 +272,7 @@ export default {
   AlertType,
   OptInfo,
   httpUrl,
-  getTipIconName
+  getTipIconName,
+  Validator
 }
 </script>

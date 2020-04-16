@@ -9,12 +9,12 @@
         <v-text-field
           v-model="name"
           :counter="10"
-          :rules="[v => !!v || '请正确填写']"
+          :rules="[v => comutil.Validator.userNameCheck(v)]"
           label="名字"
           required
         ></v-text-field>
 
-        <v-text-field v-model="password" :rules="[v => !!v || '请正确填写']" label="密码" required></v-text-field>
+        <v-text-field v-model="password" :rules="[v => comutil.Validator.passwordCheck(v)]" label="密码" required></v-text-field>
         <v-container>
           <v-btn color="error" class="mr-4" @click="reset">重置</v-btn>
           <v-btn color="warning" :loading="querying" @click="login()">登陆</v-btn>
