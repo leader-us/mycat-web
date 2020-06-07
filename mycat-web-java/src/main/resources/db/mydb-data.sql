@@ -1,4 +1,3 @@
-insert into user(name,password,roles,enabled) values ('test','111111','user,admin',1);
 insert into user(name,password,roles,enabled) values ('test','111111','user',1);
 insert into user(name,password,roles,enabled) values ('test','111111','admin',1);
 
@@ -101,3 +100,4 @@ INSERT INTO `house` VALUES (96, '96新鲜出炉 婚房级配置 居住舒适 环
 INSERT INTO `house` VALUES (97, '97新鲜出炉 婚房级配置 居住舒适 环境好', '5', 0, 5, 2, 'A197', '0097', '97一室一厅', 2, 99, 9097, 8097, '短租', 35, '97采光好，房间大，可做饭，距离美院近，公交方便', '97979797', 20, '', 'Item 1');
 INSERT INTO `house` VALUES (98, '98新鲜出炉 婚房级配置 居住舒适 环境好', '5', 0, 5, 2, 'A198', '0098', '98一室一厅', 2, 99, 9098, 8098, '短租', 35, '98采光好，房间大，可做饭，距离美院近，公交方便', '98989898', 20, '', 'Item 1');
 INSERT INTO `house` VALUES (99, '99新鲜出炉 婚房级配置 居住舒适 环境好', '5', 0, 5, 2, 'A199', '0099', '99一室一厅', 2, 99, 9099, 8099, '短租', 35, '99采光好，房间大，可做饭，距离美院近，公交方便', '99999999', 20, '', 'Item 1');
+

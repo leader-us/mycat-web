@@ -49,3 +49,8 @@ spring:
     #schema-password:
     #schema-username:
     sql-script-encoding: utf-8
+
+#无需验证token的url请求列表
+exclude:
+  token-validation-urls:
+    - /login
