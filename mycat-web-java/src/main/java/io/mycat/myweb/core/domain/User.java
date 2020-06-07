@@ -10,6 +10,10 @@ public class User {
     // 逗号分隔的角色列表
     private String roles;
 
+    public User() {
+
+    }
+
     public User(Long id, String name, String password) {
         this.id = id;
         this.name = name;

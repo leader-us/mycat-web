@@ -12,17 +12,17 @@ import io.mycat.myweb.core.domain.User;
  * 用户（账号）Dao
  */
 public interface UserDao extends PagingAndSortingRepository<User, Long> {
-    @Query("SELECT * FROM account WHERE name = :name")
+    @Query("SELECT * FROM user WHERE name = :name")
     Optional<User> accountByUsername(@Param("name") String name);
 
-    @Query("SELECT * FROM account WHERE email = :email")
+    @Query("SELECT * FROM user WHERE email = :email")
     Optional<User> accountByEmail(@Param("email") String email);
 
     @Modifying
-    @Query("UPDATE account SET enabled = 1 WHERE name = :name")
+    @Query("UPDATE user SET enabled = 1 WHERE name = :name")
     void activateAccount(@Param("name") String name);
 
     @Modifying
-    @Query("UPDATE account SET password = :password WHERE name = :name")  
+    @Query("UPDATE user SET password = :password WHERE name = :name")
     void updatePassword(@Param("name") String name, @Param("password") String password);
 }
