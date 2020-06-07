@@ -87,18 +87,21 @@ export default {
       })
     },
     routeToUpdateOrCreateScreen(update, index, theId, title) {
+      let isprocess = false
       let url = this.meta.createurl
       let dialogtitle = this.meta.createtitle
       if (update) {
         url = this.meta.updateurl
         dialogtitle = title
+        isprocess = true
       }
 
       this.comutil.CURDDialog.showDialog({
         itemIndex: index,
         itemId: theId,
         title: dialogtitle,
-        vueComponent: url
+        vueComponent: url,
+        isprocess: isprocess
       })
     },
     async deleteItem(selectedParm) {
@@ -106,20 +109,32 @@ export default {
         'do syn delete row ' + selectedParm.id + ' ,url  ' + this.meta.deleteurl
       )
       await new Promise(resolve => setTimeout(resolve, 3000))
-      let { data } = await this.axioscall.post(this.meta.deleteurl, {})
-      console.log('data ' + data)
-      this.$data.rows.splice(selectedParm, 1)
+      let jsObj = {}
+      jsObj.id = selectedParm.id
+      let { data } = await this.axioscall.post(this.meta.deleteurl, jsObj)
+      console.log('DomainListPage_methods:deleteItem_responsedata---' + JSON.stringify(data))
+      // 此处返回值比较判断可用预先定义替换字符串
+      if (data.retCode === 0) {
+       this.$data.rows.splice(selectedParm.index, 1)
+       this.comutil.MessageBox.show('id:' + selectedParm.id + '删除成功！')
+       return true
+       } else {
+         this.comutil.MessageBox.show('删除失败，请重试')
+       return false
+       }
     },
     async onSearch() {
       let queryparam = this.meta.queryparams()
-      console.log('do search ' + JSON.stringify(queryparam))
-      this.comutil.MessageBox.show(JSON.stringify(queryparam))
+      console.log('DomainListPage_methods:onSearch_queryparams---' + JSON.stringify(queryparam))
+      // this.comutil.MessageBox.show(JSON.stringify(queryparam))
       this.querying = true
       let mydata = this.$data
       let data = null
       try {
         data = await this.axioscall.post(this.meta.queryurl, queryparam)
-        mydata.rows = data
+        // 打印内容可能会比较多，建议注释
+        // console.log('DomainListPage_methods:onSearch_responsedata---' + JSON.stringify(data.data))
+        mydata.rows = data.data.data
       } catch (e) {
         console.log(' exec call error ' + e)
         this.comutil.MessageBox.show(e)

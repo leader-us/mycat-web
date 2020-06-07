@@ -148,6 +148,7 @@ const CURDDialog = {
   title: '',
   itemId: '',
   itemIndex: '',
+  isprocess: false,
   vueComponent: null,
   callBack: null,
   callBackParams: {},
@@ -159,8 +160,10 @@ const CURDDialog = {
       } catch (e) {
         console.log(' exec call error ' + e)
         MessageBox.show(e)
+        this.isprocess = false
       } finally {
         //
+         this.isprocess = false
       }
     }
     // close input dialog'

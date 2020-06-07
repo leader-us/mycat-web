@@ -5,3 +5,49 @@ CREATE TABLE USER(
   ROLES varchar(128),
   ENABLED INT
 );
+
+-- 客房
+CREATE TABLE house
+(
+	-- 主键id
+	id bigint(19) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+	-- 标题
+	title varchar(200) DEFAULT '' COMMENT '标题',
+	-- 抽成 单位 %
+	tip char(2) DEFAULT '' COMMENT '抽成 单位 %',
+	-- 抽成类型
+	tip_type int(2) COMMENT '抽成类型',
+	-- 图片
+	pics int(2) COMMENT '图片',
+	-- 视频
+	video int(2) COMMENT '视频',
+	-- 构建
+	buiding varchar(20) DEFAULT '' COMMENT '构建',
+	-- 客房编号
+	house_no varchar(20) DEFAULT '' COMMENT '客房编号',
+	-- 房间类型
+	house_type varchar(20) DEFAULT '' COMMENT '房间类型',
+	-- 楼层
+	layer int(3) COMMENT '楼层',
+	-- 日租价格
+	priceday decimal(10,2) COMMENT '日租价格',
+	-- 短租价格
+	price_short decimal(10,2) COMMENT '短租价格',
+	-- 长租价格
+	pricelong decimal(10,2) COMMENT '长租价格',
+	-- 出租状态
+	rent_type varchar(20) DEFAULT '' COMMENT '出租状态',
+	-- 期数
+	period int(3) COMMENT '期数',
+	-- 描述
+	house_describe varchar(200) DEFAULT '' COMMENT '描述',
+	-- 姓名
+	house_name varchar(50) DEFAULT '' COMMENT '姓名',
+	-- 年龄
+	age int(3) COMMENT '年龄',
+	-- 分类
+	item varchar(10) DEFAULT '' COMMENT '分类',
+	-- 邮箱
+	email varchar(50) DEFAULT '' COMMENT '邮箱',
+	PRIMARY KEY (id)
+) COMMENT = '客房';
